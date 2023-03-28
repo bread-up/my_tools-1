@@ -9,7 +9,7 @@ env:
   
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     steps:
        - name: Checkout
@@ -17,7 +17,7 @@ jobs:
                                
        - name: Clone
          run: |
-              sudo apt update && sudo apt install git wget make ccache zip -y
+              sudo apt update && sudo apt install git wget make ccache libncurses* zip -y
               cd && git clone --depth=1 $Kernel_Link kernel && cd kernel
               git clone --depth=1 $GCC /opt/gcc
               make exynos7870-m10lte_defconfig ARCH=arm64 CROSS_COMPILE=/opt/gcc/bin/aarch64-linux-android- ANDROID_PLATFORM_VERSION=10 ANDROID_MAJOR_VERSION=q O=./out
